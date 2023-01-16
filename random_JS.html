@@ -1,0 +1,54 @@
+<script>
+  <!-- when page loads run the iniitalization code -->
+  if( document.readyState !== 'loading' ) {
+    console.log( 'document is already ready, just execute code here' );
+    myInitCode();
+  } else {
+    document.addEventListener('DOMContentLoaded', function () {
+    console.log( 'document was not ready, place code here' );
+    myInitCode();
+  });
+  }
+  
+function myInitCode() {
+  document.getElementById("runIt").addEventListener("click",app.getList);
+}
+
+function theAlert(){
+  //alert("Hello! I am an alert box!!");
+  //TODO - add failure handler
+  //google.script.run.withSuccessHandler(theParser).getUrlData(url)
+  
+}
+
+const app = {}
+app.makeAlert = (function (){alert("We are in the object!")})
+
+app.getList = (function (){
+  document.getElementById("nest2").style.display = "block"
+  let theInfo = {}
+  theInfo.min    = parseInt(document.getElementById("txtMin").value)
+  theInfo.max    = parseInt(document.getElementById("txtMax").value)
+  theInfo.number = parseInt(document.getElementById("txtNumber").value)
+  theInfo.addr   = document.getElementById("address").value
+  let radios = document.getElementsByName("unique")
+  theInfo.unique = Array.from(radios).find(radio => radio.checked).value
+
+
+  google.script.run
+    .withSuccessHandler(app.showSuccess)
+    .withFailureHandler(app.showError)
+    .expose("IDS_Helpers","theMainApp","doGetRandomList",theInfo)
+})
+
+
+
+app.showSuccess = (function (theMsg){
+  document.getElementById("nest2").style.display = "none"
+  console.log(theMsg)
+})
+app.showError = (function (theMsg){
+  document.getElementById("nest2").style.display = "none"
+  console.log(theMsg)
+})
+</script>

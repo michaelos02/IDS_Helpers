@@ -1,0 +1,15 @@
+{
+  "timeZone": "America/New_York",
+  "exceptionLogging": "STACKDRIVER",
+  "runtimeVersion": "V8",
+  "dependencies": {
+    "libraries": [
+      {
+        "userSymbol": "mroBBLog",
+        "libraryId": "1RHMscVSeGBkUHNw3_Qk929lDRC21Uw5_5e8G5j9a_CXKiwzoOLL-uPEM",
+        "version": "2",
+        "developmentMode": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,53 @@
+<script>
+  <!-- when page loads run the iniitalization code -->
+  if( document.readyState !== 'loading' ) {
+    console.log( 'document is already ready, just execute code here' );
+    myInitCode();
+  } else {
+    document.addEventListener('DOMContentLoaded', function () {
+    console.log( 'document was not ready, place code here' );
+    myInitCode();
+  });
+  }
+  
+function myInitCode() {
+  document.getElementById("runIt").addEventListener("click",app.doShuffle);
+}
+
+var arr = [["Gender","Survival"],["male","dies"],["male","lives"],["female","dies"]]
+
+const app = {}
+app.makeAlert = (function (){alert("We are in the object!")})
+
+app.getColumn = (function (){
+  google.script.run
+    .withSuccessHandler(app.showSuccess)
+    .withFailureHandler(app.showError)
+    .expose("IDS_Helpers","theShuffle","getColumn",arr,0)
+})
+
+app.doShuffle = (function (){
+  //let {addr, shuffleCol, constCol, shuffleNumber, resultsAddr} = theInfo
+  document.getElementById("nest2").style.display = "block"
+  let theInfo = {}
+  theInfo.addr          = document.getElementById("txtDataRange").value
+  theInfo.resultsAddr   = document.getElementById("txtAddress").value
+  theInfo.constCol      = document.getElementById("txtConstant").value
+  theInfo.shuffleCol    = document.getElementById("txtShuffle").value
+  theInfo.shuffleNumber = parseInt(document.getElementById("numberOfshuffles").value)
+
+  google.script.run
+    .withSuccessHandler(app.showSuccess)
+    .withFailureHandler(app.showError)
+    .expose("IDS_Helpers","theShuffleApp","doShuffle",theInfo)
+})
+
+app.showSuccess = (function (theMsg){
+  document.getElementById("nest2").style.display = "none"
+  console.log(theMsg)
+})
+app.showError = (function (theMsg){
+  document.getElementById("nest2").style.display = "none"
+  console.log(theMsg)
+})
+</script>

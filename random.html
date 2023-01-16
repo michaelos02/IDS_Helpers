@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base target="_top">
+  <?!= include("common_CSS")?>
+  <?!= include("common_CSS_spinner")?>
+</head>
+
+<body>
+  <div id="container">
+    <div class="settings">
+      <label class="italics" for="txtMin">Minimum:</label>
+      <input type="text" id="txtMin" placeholder="Enter minimum number">
+      <label class="italics" for="txtMax">Maximum:</label>
+      <input type="text" id="txtMax" placeholder="Enter mximum number">
+      <label class="italics" for="txtNumber">Number:</label>
+      <input type="text" id="txtNumber" placeholder="Enter the number of numbers">
+      <label class="italics" for="address">Address:</label>
+      <input type="text" id="address" placeholder="Enter the address (ie 'B2')">
+      <label class="italics" >Unique?</label>
+      <div class="item-B">
+        <input type="radio" id="radioYes" name="unique" value="Yes">
+        <label for="choice1">Yes</label>
+        <input type="radio" id="radioNo" name="unique" value="No" checked>
+        <label for="choice1">No</label>
+      </div>
+      <button id="runIt">Get List</button>
+
+    </div>
+  </div>
+  <div id="nest2"></div>
+  <?!= include("random_JS")?>
+</body>
+
+</html>
